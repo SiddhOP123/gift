@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HBD Bestie ✨</title>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;600&display=swap');
+
+        body { margin: 0; background: #0f0f0f; color: white; font-family: 'Outfit', sans-serif; overflow: hidden; }
+        .page { display: none; height: 100vh; flex-direction: column; justify-content: center; align-items: center; padding: 20px; text-align: center; position: absolute; width: 100%; box-sizing: border-box; }
+        .active { display: flex; animation: slideIn 0.5s ease-out; }
+
+        .glass { background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(15px); padding: 30px; border-radius: 30px; border: 1px solid rgba(255, 255, 255, 0.1); }
+        h1 { font-size: 2rem; margin-bottom: 10px; background: linear-gradient(to right, #ff758c, #ff7eb3); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        button { padding: 15px 30px; border-radius: 20px; border: none; background: #ff758c; color: white; font-weight: 600; cursor: pointer; margin-top: 20px; transition: 0.3s; }
+        button:active { transform: scale(0.95); }
+
+        @keyframes slideIn { from { transform: translateX(100%); } to { transform: translateX(0); } }
+    </style>
+</head>
+<body>
+
+    <!-- Page 1: Greeting -->
+    <div id="page1" class="page active">
+        <div class="glass">
+            <h1>Hey Bestie! ✨</h1>
+            <p>I built this for you. Ready?</p>
+            <button onclick="showPage('page2')">Start</button>
+        </div>
+    </div>
+
+    <!-- Page 2: Our Memories -->
+    <div id="page2" class="page">
+        <div class="glass">
+            <h1>Our Journey 📸</h1>
+            <p>From the funniest laughs to the best memories, thanks for being by my side.</p>
+            <button onclick="showPage('page3')">Next</button>
+        </div>
+    </div>
+
+    <!-- Page 3: The Surprise -->
+    <div id="page3" class="page">
+        <div class="glass">
+            <h1>Happy Birthday! 🎂</h1>
+            <p>May this year bring you as much happiness as you've brought to me.</p>
+            <button onclick="celebrate()">Click for Surprise!</button>
+        </div>
+    </div>
+
+    <script>
+        function showPage(id) {
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            document.getElementById(id).classList.add('active');
+        }
+
+        function celebrate() {
+            confetti({ particleCount: 150, spread: 70, origin: { y: 0.6 } });
+            setTimeout(() => alert("I love you, Bestie! Have the best day ever! 💖"), 500);
+        }
+    </script>
+</body>
+</html>
